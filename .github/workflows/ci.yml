@@ -28,5 +28,10 @@ jobs:
           java-version: '21'
           cache: maven
 
+      - name: Install sdd-spring-guardrails (tag 1.0.0)
+        run: |
+          git clone --depth 1 --branch 1.0.0 https://github.com/leosaponisouza/sdd-spring-guardrails.git /tmp/sdd-spring-guardrails
+          mvn -B -f /tmp/sdd-spring-guardrails/pom.xml install -DskipTests
+
       - name: Run Maven test & SDD guardrails suite
         run: mvn -B test
